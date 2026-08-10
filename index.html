@@ -1,0 +1,175 @@
+<!DOCtYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: Pixel Arial;
+            src: url(https://litter.catbox.moe/vpn9va.TTF);
+        }
+
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font: 1rem sans-serif;
+            font-family: "Roboto", "Arial", sans-serif;
+        }
+
+        html {
+            background: gainsboro;
+            background-image: linear-gradient(#1A8FE5 .1rem, transparent .1rem), linear-gradient(to left, #1A8FE5 .1rem, transparent .1rem);
+            background-size: 1.75rem 1.75rem;
+        }
+
+        body {
+            display: flex;
+        }
+
+        #column {
+            height: 100vh;
+            width: 20%;
+            max-width: 17rem;
+            background: white;
+            position: sticky;
+            top: 0px;
+        }
+
+        main {
+            /* min-width: 70%; */
+            width: 70%;
+            margin: 0px auto;
+            height: 100vh;
+            /* position: fixed;
+            bottom: 0px;
+            right: 5vh; */
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+
+            /* hides scrollbar IE, Edge and Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+
+            scroll-behavior: smooth;
+        }
+
+        /* hides scrollbar safari, chrome, opera */
+        .example::-webkit-scrollbar {
+            display: none;
+        }
+
+        section {
+            background-color: white;
+            height: 85vh;
+            margin: 15vh 0px;
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
+
+            border: 0.2rem solid black;
+        }
+
+        @supports (animation-timeline:view(y)) {
+            section {
+                animation: scroll linear both;
+                animation-timeline: view(y);
+            }
+        }
+
+        section#home {
+            margin-top: 7.5vh;
+        }
+
+        section#snippets {
+            margin-bottom: 7.5vh;
+        }
+
+        @keyframes scroll {
+
+            0%,
+            100% {
+                opacity: 0.7;
+                scale: 0.7;
+            }
+
+            35%,
+            65% {
+                opacity: 1;
+                scale: 1;
+            }
+        }
+
+        h1 {
+            font-size: 8vw;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        nav a {
+            font-family: Pixel Arial, monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="column">
+        <nav>
+            <ul><a href="#home">home</a></ul>
+            <ul><a href="#about&updates">about & updates</a></ul>
+            <ul><a href="#sheets&tools">cheatsheets & tools</a></ul>
+            <ul><a href="#tutorials&links">tutorials & links</a></ul>
+            <ul><a href="#frontendmentor">frontend mentor</a></ul>
+            <ul><a href="#templates">other projects</a></ul>
+            <ul><a href="#snippets">snippets</a></ul>
+        </nav>
+    </div>
+    <main>
+        <section id="home">
+            <h1>ninevoltheart.</h1></em></h1><br> scroll or click links over there
+            <a href="domain.link">a link :3</a>
+        </section>
+
+        <section id="about&updates">two</section>
+
+        <section id="sheets&tools"></section>
+
+        <section id="tutorials&links"></section>
+
+        <section id="frontendmentor"></section>
+
+        <section id="templates">second last</section>
+
+        <section id="snippets">snippets</section>
+    </main>
+    <script>
+        window.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('section[id]');
+            let current = '';
+            sections.forEach(s => {
+                const rect = s.getBoundingClientRect();
+                if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+                    current = s.id;
+                }
+            });
+            if (current && window.location.hash !== `#${current}`) {
+                history.replaceState(null, null, `#${current}`);
+                console.log('Updated to:', current); // Check console for this
+            }
+        }, { passive: true });
+    </script>
+</body>
+
+</html>
